@@ -121,53 +121,6 @@
                 </a></div>
             </div>
         </section>
-<!-- Itinerario en animación -->
-<section class="time">
-    <div class="timeline">
-        <div class="point" data-index="1">
-            <div class="text-box">
-                <h2>Ceremonia</h2>
-                <h3>16:00 PM</h3>
-            </div>
-        </div>
-        <div class="point" data-index="2">
-            <div class="text-box">
-                <h2>Recepción</h2>
-                <h3>16:30 PM</h3>
-            </div>
-        </div>
-        <div class="point" data-index="3">
-            <div class="text-box">
-                <h2>Cocktail</h2>
-                <h3>17:00 PM</h3>
-            </div>
-        </div>
-        <div class="point" data-index="4">
-            <div class="text-box">
-                <h2>Brindis</h2>
-                <h3>18:00 PM</h3>
-            </div>
-        </div>
-        <div class="point" data-index="5">
-            <div class="text-box">
-                <h2>Cena</h2><br>
-                <h3>19:00 PM</h3>
-            </div>
-        </div>
-        <div class="point" data-index="6">
-            <div class="text-box">
-                <h2>Primer baile</h2>
-                <h3>20:00 PM</h3>
-            </div>
-        </div>
-        <div class="point" data-index="7">
-            <div class="text-box">
-                <h2>Fiesta</h2>
-                <h3>21:00 PM</h3>
-            </div>
-        </div>
-    </div>
-</section>
 
 <!-- Hoteles para quedarte a hospedarte -->
         <section class="encabezado">
@@ -281,6 +234,54 @@
     </button>
 </section>
     </main>
+    
+<!-- Pie de página o sección para formulario -->
+<footer>
+        <div class="library-card envelope">
+          <div class="front">
+            <p class="stamp">Click aquí para llenar formulario</p>
+        </div>
+        <div class="card">
+            <h2 class="author">Alejandra & Roberto</h2>
+            <h4 class="title">Confirma tu asistencia!</h4>
+        <table>
+            <br>
+            <tr>
+                <td class="due-date form-label"><time>Nombre</time></td>
+                <td class="issued-to"></td>
+            </tr>
+            <tr>
+                <td class="due-date form-label"><time>Correo</time></td>
+                <td class="issued-to"><br></td>
+            </tr>
+            <tr>
+                <td class="due-date form-label"><time>Asistiras?</time></td>
+                <td class="issued-to"><br></td>
+            </tr>
+            <tr>
+                <td class="due-date form-label"><time>Teléfono</time></td>
+                <td class="issued-to"><br></td>
+            </tr>
+            </table>
+            <form id="rsvp-form">
+                <input id="name" name="name" type="text" placeholder="Ingresa tu nombre" required>
+                <input id="email" name="email" type="email" placeholder="Ingresa tu correo" required>
+    
+            <select id="attending" name="attending" required>
+                <option value="" selected hidden>¿Sí o No?</option>
+                <option value="yes">Sí</option>
+                <option value="no">No</option>
+            </select>
+    
+            <input id="phone" name="phone" type="tel" placeholder="Ingresa tu teléfono" required>
+            <button type="submit" class="submit">Enviar</button>
+            </form>
+
+        </div>
+        </div>
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js'></script>
+    </footer>
+    <script>
 
 // Cuenta regresiva hasta la fecha de la boda (24 de Mayo de 2024)
         const countDownDate = new Date("May 24, 2025 14:00:00").getTime();
