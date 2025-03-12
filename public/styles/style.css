@@ -171,7 +171,7 @@ main {
 /* 🔹 Cartas animadas */
 .wrapper .cart {
     background: rgba(216, 154, 60, 0.4);
-    width: 380px;
+    width: 400px;
     border-radius: 20px;
     display: flex;
     align-items: center;
@@ -345,7 +345,7 @@ main {
 /* 🔹 Animación de entrada de frases */
 .parrafo {
     opacity: 0;
-    transform: translateX(150vw);
+    transform: translateX(-150vw);
     transition: transform 1.5s cubic-bezier(0.25, 1, 0.5, 1), opacity 1.5s ease-out;
     will-change: transform, opacity;
 }
@@ -367,20 +367,6 @@ main {
     opacity: 1;
     transform: translateX(0);
 }
-
-/* 🔹 Animación de entrada de imágenes 2 */
-.slide2 {
-    opacity: 0;
-    transform: translateX(150vw);
-    transition: transform 1.5s cubic-bezier(0.25, 1, 0.5, 1), opacity 1.5s ease-out;
-    will-change: transform, opacity;
-}
-
-.slide2--visible {
-    opacity: 1;
-    transform: translateX(0);
-}
-
 
 /* Codigo de vestimenta */
 .codigoVestimenta{
@@ -418,7 +404,7 @@ main {
 
 .tituloCodigo img{
     height: 80px;
-    width: 80px;
+    width: 100px;
 }
 
 @media(min-width:600px) {
@@ -610,59 +596,62 @@ footer h2 {
 /* Línea de Tiempo */
 .time {
     font-family: "Times New Roman", serif;
-    margin: 0;
-    padding: 0;
+    padding: 50px 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 200vh;
     flex-direction: column;
 }
 
+/* Línea de tiempo */
 .timeline {
     position: relative;
     width: 10px;
     background-color: #ccc;
-    height: 160vh;
+    min-height: 500px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 50px 0;
+    padding: 10px 0;
+    transition: height 0.5s ease;
 }
 
+/* Iconos en la línea de tiempo */
 .point {
     position: relative;
-    width: 20px;
-    height: 20px;
-    background-color: gray;
-    border-radius: 50%;
+    width: 50px;  /* Ajusta el tamaño de los iconos */
+    height: 50px;
     margin: 50px 0;
-    transition: background-color 0.3s;
+    display: flex;
+    transition: transform 0.3s ease, filter 0.3s ease;
 }
 
-.point.active {
-    background-color: #ae7350;
+/* Añadir un contorno a las imágenes */
+.point img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: grayscale(80%);
+    transition: filter 0.3s ease, transform 0.3s ease, border 0.3s ease;
+    border: 3px solid #ae7350; /* Contorno del color predeterminado */
+    border-radius: 50%; /* Hace que el borde sea redondo */
 }
 
+/* Cuando el punto está activo */
+.point.active img {
+    filter: grayscale(0%);
+    transform: scale(1.2);
+    border: 3px solid #ae7350; /* Mantiene el borde visible cuando se activa */
+}
+
+/* Posición de los textos */
 .text-box {
     position: absolute;
-    padding: 0;
     font-size: 12px;
     font-weight: bold;
     color: #ae7350;
     opacity: 0;
     transition: opacity 0.5s ease;
-    background: none;
-    display: flex;
-    margin: 0;
-    flex-wrap: wrap;
-    max-width: none;
-}
-
-.text-box h2,
-.text-box h3 {
-    margin: 0; /* Elimina el margen entre h2 y h3 */
-    padding: 0; /* Asegura que no haya padding */
     white-space: nowrap;
 }
 
@@ -671,19 +660,9 @@ footer h2 {
 }
 
 .point:nth-child(odd) .text-box {
-    left: 30px;
-    transform: translateX(10px);
+    left: 60px;
 }
 
 .point:nth-child(even) .text-box {
-    right: 30px;
-    transform: translateX(-10px);
-}
-
-.point::before {
-    left: -15px; /* Ajusta la posición izquierda */
-}
-
-.point::after {
-    right: -15px; /* Ajusta la posición derecha */
+    right: 60px;
 }
