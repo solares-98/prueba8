@@ -125,42 +125,49 @@
 <section class="time">
     <div class="timeline">
         <div class="point" data-index="1">
+            <img src="images/ceremonia.png" alt="Ceremonia">
             <div class="text-box">
                 <h2>Ceremonia</h2>
                 <h3>16:00 PM</h3>
             </div>
         </div>
         <div class="point" data-index="2">
+            <img src="images/brindis.png" alt="Recepción">
             <div class="text-box">
                 <h2>Recepción</h2>
                 <h3>16:30 PM</h3>
             </div>
         </div>
         <div class="point" data-index="3">
+            <img src="images/ceremonia.png" alt="Cocktail">
             <div class="text-box">
                 <h2>Cocktail</h2>
                 <h3>17:00 PM</h3>
             </div>
         </div>
         <div class="point" data-index="4">
+            <img src="images/brindis.png" alt="Brindis">
             <div class="text-box">
                 <h2>Brindis</h2>
                 <h3>18:00 PM</h3>
             </div>
         </div>
         <div class="point" data-index="5">
+            <img src="images/ceremonia.png" alt="Cena">
             <div class="text-box">
-                <h2>Cena</h2><br>
+                <h2>Cena</h2>
                 <h3>19:00 PM</h3>
             </div>
         </div>
         <div class="point" data-index="6">
+            <img src="images/brindis.png" alt="Primer Baile">
             <div class="text-box">
-                <h2>Primer baile</h2>
+                <h2>Primer Baile</h2>
                 <h3>20:00 PM</h3>
             </div>
         </div>
         <div class="point" data-index="7">
+            <img src="images/ceremonia.png" alt="Fiesta">
             <div class="text-box">
                 <h2>Fiesta</h2>
                 <h3>21:00 PM</h3>
@@ -168,7 +175,7 @@
         </div>
     </div>
 </section>
-
+<br>
 <!-- Hoteles para quedarte a hospedarte -->
         <section class="encabezado">
             <p class="frase">Esperamos contar con tu presencia en este día tan especial para nosotros y para que el hospedaje no sea un problema a continuación te damos un par de opciones de algunos hoteles.</p>
@@ -370,19 +377,38 @@
 
 <!-- Script timeline -->
 <script>
-    document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function () {
     const points = document.querySelectorAll(".point");
     const timeline = document.querySelector(".timeline");
-    let scrollTimeout;
-    
+    const section = document.querySelector(".time");
+
+    function adjustTimelineHeight() {
+        const firstPoint = points[0];
+        const lastPoint = points[points.length - 1];
+
+        const timelineTop = timeline.getBoundingClientRect().top + window.scrollY;
+        const firstPointTop = firstPoint.getBoundingClientRect().top + window.scrollY;
+        const lastPointBottom = lastPoint.getBoundingClientRect().bottom + window.scrollY;
+
+        let newHeight = lastPointBottom - firstPointTop;
+        
+        // Aplicamos un mínimo de altura para evitar que se encoja demasiado
+        if (newHeight < 500) {
+            newHeight = 500;
+        }
+
+        timeline.style.height = `${newHeight}px`;
+    }
+
     function checkScroll() {
-        const triggerHeight = window.innerHeight * 0.7;
+        const triggerHeight = window.innerHeight * 0.8;
+
         let lastActiveIndex = -1;
 
         points.forEach((point, index) => {
             const pointTop = point.getBoundingClientRect().top;
             const textBox = point.querySelector(".text-box");
-            
+
             if (pointTop < triggerHeight) {
                 point.classList.add("active");
                 textBox.classList.add("visible");
@@ -394,21 +420,19 @@
         });
 
         if (lastActiveIndex >= 0) {
-            timeline.classList.add("active");
-            timeline.style.transition = "background 0.5s ease-out";
-            timeline.style.background = `linear-gradient(to bottom, #ae7350 ${((lastActiveIndex + 1) / points.length) * 100}%, gray ${((lastActiveIndex + 1) / points.length) * 100}%)`;
+            timeline.style.background = `linear-gradient(to bottom, #ae7350 ${(lastActiveIndex + 1) / points.length * 100}%, gray ${(lastActiveIndex + 1) / points.length * 100}%)`;
         } else {
-            timeline.classList.remove("active");
-            timeline.style.transition = "background 0.5s ease-out";
             timeline.style.background = "gray";
         }
     }
-    
+
     window.addEventListener("scroll", () => {
-        clearTimeout(scrollTimeout);
-        scrollTimeout = setTimeout(checkScroll, 100);
+        requestAnimationFrame(checkScroll);
     });
-    
+
+    window.addEventListener("resize", adjustTimelineHeight);
+
+    adjustTimelineHeight();
     checkScroll();
 });
 </script>
