@@ -569,6 +569,11 @@ opacity: 0;
     opacity: 0.8;
 }
 
+.mesaDeRegalos .lluvia{
+    height: 100px;
+    width: 100px;
+}
+
 /* Pie de página */
 /* 🔹 Footer */
 footer {
