@@ -444,17 +444,6 @@ main {
     margin-bottom: 100px;
 }
 
-.codigoVestimenta .contVestiment .hombres p, .mujeres p{
-font-size: 20px;
-position: absolute;
-opacity: 0;
-}
-
-.codigoVestimenta .contVestiment .hombres:hover p, .mujeres:hover p{
-    animation: transition .7s linear ;
-    animation-fill-mode: forwards;
-}
-
 @keyframes transition{
     0%{
         opacity: 0;
